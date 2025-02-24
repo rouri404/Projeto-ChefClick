@@ -19,7 +19,7 @@ ChefClick é um programa para cadastro de restaurantes desenvolvido em Python. O
 ### Passos
 1. Clone este repositório:
    ```sh
-   git clone https://github.com/seu-usuario/chefclick.git
+   git clone https://github.com/rouri404/chefclick.git
    ```
 2. Acesse a pasta do projeto:
    ```sh
