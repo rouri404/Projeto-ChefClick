@@ -32,7 +32,3 @@ ChefClick é um programa para cadastro de restaurantes desenvolvido em Python. O
 
 ## Contribuição
 Se você deseja contribuir para o ChefClick, fique à vontade para abrir issues ou enviar pull requests!
-
-## Licença
-Este projeto está sob a licença MIT. Para mais detalhes, consulte o arquivo LICENSE.
-
