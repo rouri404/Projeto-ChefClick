@@ -63,6 +63,16 @@ def finalizar_app():
     exit(0)
 
 def cadastrar_novo_restaurante():
+    '''Função responsável por cadastrar novos restaurantes
+    
+    Inputs:
+    - Nome do restaurante
+    - Categoria do restaurante
+
+    Outputs:
+    - Adiciona o novo restaurante e categoria do mesmo no dicionário 'restaurantes'
+
+    '''
     limpar_tela()
     console.print("[khaki1]Cadastro de novos restaurantes.[/khaki1]\n")
 
@@ -85,6 +95,12 @@ def cadastrar_novo_restaurante():
     voltar_menu_principal()
 
 def listar_restaurantes():
+    '''Função resposável por listar os restaurantes cadastrados
+    
+    Outputs:
+    -Lista todos os itens dentro do dicionário 'restaurantes'
+    
+    '''
     limpar_tela()
     console.print('[khaki1]Listando os restaurantes.[/khaki1]\n')
     console.print(f'[wheat1]Nome do restaurante[/wheat1] {''.ljust(2)} | [wheat1]Categoria[/wheat1] {''.ljust(10)} | [wheat1]Status[/wheat1]')
@@ -100,6 +116,12 @@ def listar_restaurantes():
     voltar_menu_principal()
 
 def ativar_restaurante():
+    '''Função responsável por ativar e desativar o status do restaurante
+    
+    Inputs:
+    - Escolher restaurante que deseja ativar/desativar
+    
+    '''
     limpar_tela()
     console.print("[khaki1]Alterando o estado do restaurante.[/khaki1]\n")
 
