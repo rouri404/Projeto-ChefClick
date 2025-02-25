@@ -50,8 +50,10 @@ def exibir_opcoes():
     console.print('[yellow]3.[/yellow] Ativar restaurante')
     console.print('[yellow]4.[/yellow] Sair\n')
 
+
 def limpar_tela():
-    os.system('cls' if platform.system() == 'Windows' else 'clear')
+   os.system('cls' if platform.system() == 'Windows' else 'clear')
+
 
 def voltar_menu_principal():
     Prompt.ask("\n[wheat1]Aperte uma tecla para voltar ao menu principal[/wheat1]")
@@ -103,7 +105,7 @@ def listar_restaurantes():
     '''
     limpar_tela()
     console.print('[khaki1]Listando os restaurantes.[/khaki1]\n')
-    console.print(f'[wheat1]Nome do restaurante[/wheat1] {''.ljust(2)} | [wheat1]Categoria[/wheat1] {''.ljust(10)} | [wheat1]Status[/wheat1]')
+    console.print(f'[wheat1]Nome do restaurante[/wheat1] {"".ljust(2)} | [wheat1]Categoria[/wheat1] {"".ljust(10)} | [wheat1]Status[/wheat1]')
     for item in restaurantes:
         nome_restaurante = item['nome']
         categoria = item['categoria']
