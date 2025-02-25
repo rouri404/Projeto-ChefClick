@@ -1,6 +1,7 @@
 import os
 import subprocess
 import platform
+from time import sleep
 
 def install_rich():
     try:
@@ -25,6 +26,11 @@ restaurantes = [{'nome':'Pizzeria Joao', 'categoria':'Pizza', 'ativo':True},
                 {'nome':'Pastelaria da Akemi', 'categoria':'Pastel', 'ativo':False},
                 {'nome':'McDonalds', 'categoria':'Lanche', 'ativo':True}]
 
+compatibleClear = lambda: print('\n'*100)
+
+modoCompatibilidade = bool(0)
+
+
 def exibir_nome_do_programa():
     texto = """
 ░█████╗░██╗░░██╗███████╗███████╗░█████╗░██╗░░░░░██╗░█████╗░██╗░░██╗
@@ -46,12 +52,16 @@ def exibir_nome_do_programa():
 
 def exibir_opcoes():
     console.print('[yellow]1.[/yellow] Cadastrar restaurante')
-    console.print('[yellow]2.[/yellow] Listar restaurante')
-    console.print('[yellow]3.[/yellow] Ativar restaurante')
+    console.print('[yellow]2.[/yellow] Listar restaurantes')
+    console.print('[yellow]3.[/yellow] Ativar/Desativar restaurantes')
     console.print('[yellow]4.[/yellow] Sair\n')
 
+
 def limpar_tela():
-    os.system('cls' if platform.system() == 'Windows' else 'clear')
+    if modoCompatibilidade == 0:
+        os.system('cls' if platform.system() == 'Windows' else 'clear')
+    else:
+        compatibleClear()
 
 def voltar_menu_principal():
     Prompt.ask("\n[wheat1]Aperte uma tecla para voltar ao menu principal[/wheat1]")
@@ -103,7 +113,7 @@ def listar_restaurantes():
     '''
     limpar_tela()
     console.print('[khaki1]Listando os restaurantes.[/khaki1]\n')
-    console.print(f'[wheat1]Nome do restaurante[/wheat1] {''.ljust(2)} | [wheat1]Categoria[/wheat1] {''.ljust(10)} | [wheat1]Status[/wheat1]')
+    console.print(f'[wheat1]Nome do restaurante[/wheat1] {"".ljust(2)} | [wheat1]Categoria[/wheat1] {"".ljust(10)} | [wheat1]Status[/wheat1]')
     for item in restaurantes:
         nome_restaurante = item['nome']
         categoria = item['categoria']
@@ -154,11 +164,29 @@ def opcao_invalida():
     console.print("[red1]Opcão inválida.[/red1]\n")
     voltar_menu_principal()
 
+def toggleModoCompatibilidade():
+    global modoCompatibilidade
+    
+    if modoCompatibilidade == 0:
+        modoCompatibilidade = bool(1)
+        compatibleClear()
+        print("O Modo de Compatibilidade foi ativado!")
+        sleep(1.25)
+        main()
+    else:
+        modoCompatibilidade = bool(0)
+        compatibleClear()
+        print("O Modo de Compatibilidade foi desativado!")
+        sleep(1.25)
+        main()
+    
 def escolher_opcoes():
     opcao_escolhida = input('Escolha uma opção: ')
     try:
         opcao_escolhida = int(opcao_escolhida)
-        if opcao_escolhida == 1:
+        if opcao_escolhida == 0:
+            toggleModoCompatibilidade()
+        elif opcao_escolhida == 1:
             cadastrar_novo_restaurante()
         elif opcao_escolhida == 2:
             listar_restaurantes()
