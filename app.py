@@ -87,15 +87,16 @@ def cadastrar_novo_restaurante():
 def listar_restaurantes():
     limpar_tela()
     console.print('[khaki1]Listando os restaurantes.[/khaki1]\n')
+    console.print(f'[wheat1]Nome do restaurante[/wheat1] {''.ljust(2)} | [wheat1]Categoria[/wheat1] {''.ljust(10)} | [wheat1]Status[/wheat1]')
     for item in restaurantes:
         nome_restaurante = item['nome']
         categoria = item['categoria']
         ativo = item['ativo']
 
         if ativo == True:
-            console.print(f'[yellow]-[/yellow] {nome_restaurante} | [deep_sky_blue1]{categoria}[/deep_sky_blue1] | [italic green1]Ativado[/italic green1]')
+            console.print(f'[yellow]-[/yellow] {nome_restaurante.ljust(20)} | [deep_sky_blue1]{categoria.ljust(20)}[/deep_sky_blue1] | [italic green1]Ativado[/italic green1]')
         elif ativo == False:
-            console.print(f'[yellow]-[/yellow] {nome_restaurante} | [deep_sky_blue1]{categoria}[/deep_sky_blue1] | [italic red1]Desativado[/italic red1]')
+            console.print(f'[yellow]-[/yellow] {nome_restaurante.ljust(20)} | [deep_sky_blue1]{categoria.ljust(20)}[/deep_sky_blue1] | [italic red1]Desativado[/italic red1]')
     voltar_menu_principal()
 
 def ativar_restaurante():
