@@ -28,7 +28,7 @@ ChefClick é um programa para cadastro de restaurantes desenvolvido em Python. O
    ```
 3. Execute o script principal:
    ```sh
-   python main.py
+   python app.py
    ```
 
 ## Contribuição
