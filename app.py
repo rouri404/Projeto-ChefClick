@@ -31,7 +31,6 @@ compatibleClear = lambda: print('\n'*100)
 
 modoCompatibilidade = bool(0)
 
-
 def exibir_nome_do_programa():
     texto = """
 ░█████╗░██╗░░██╗███████╗███████╗░█████╗░██╗░░░░░██╗░█████╗░██╗░░██╗
@@ -58,8 +57,6 @@ def exibir_opcoes():
     tabela.add_row("[yellow]3.[/yellow]", "Ativar/Desativar restaurantes")
     tabela.add_row("[yellow]4.[/yellow]", "Sair")
     console.print(tabela,'')
-
-
 
 def limpar_tela():
     if modoCompatibilidade == 0:
@@ -152,9 +149,8 @@ def ativar_restaurante():
     for item in restaurantes:
         nome_restaurante = item['nome']
         ativo = item['ativo']
-
         status = "[italic green1]Ativado[/italic green1]" if ativo else "[italic red1]Desativado[/italic red1]"
-        
+    
         tabela1.add_row(nome_restaurante, status)
 
     console.print(tabela1)
@@ -212,7 +208,6 @@ def escolher_opcoes():
             opcao_invalida()
     except ValueError:
         opcao_invalida()
-
 
 def main():
     limpar_tela()
