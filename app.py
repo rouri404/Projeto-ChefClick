@@ -19,6 +19,7 @@ install_rich()
 from rich.console import Console
 from rich.text import Text
 from rich.prompt import Prompt
+from rich.table import Table
 
 console = Console(color_system="windows")
 
@@ -51,10 +52,13 @@ def exibir_nome_do_programa():
     print(""" """)
 
 def exibir_opcoes():
-    console.print('[yellow]1.[/yellow] Cadastrar restaurante')
-    console.print('[yellow]2.[/yellow] Listar restaurantes')
-    console.print('[yellow]3.[/yellow] Ativar/Desativar restaurantes')
-    console.print('[yellow]4.[/yellow] Sair\n')
+    tabela = Table(show_header=False, box=None)
+    tabela.add_row("[yellow]1.[/yellow]", "Cadastrar restaurante")
+    tabela.add_row("[yellow]2.[/yellow]", "Listar restaurantes")
+    tabela.add_row("[yellow]3.[/yellow]", "Ativar/Desativar restaurantes")
+    tabela.add_row("[yellow]4.[/yellow]", "Sair")
+    console.print(tabela,'')
+
 
 
 def limpar_tela():
@@ -113,18 +117,24 @@ def listar_restaurantes():
     '''
     limpar_tela()
     console.print('[khaki1]Listando os restaurantes.[/khaki1]\n')
-    console.print(f'[wheat1]Nome do restaurante[/wheat1] {"".ljust(2)} | [wheat1]Categoria[/wheat1] {"".ljust(10)} | [wheat1]Status[/wheat1]')
-    for item in restaurantes:
-        nome_restaurante = item['nome']
-        categoria = item['categoria']
-        ativo = item['ativo']
+    if not restaurantes:
+        console.print("[bold red]Nenhum restaurante cadastrado.[/bold red]")
+    else:
+        tabela = Table(show_header=True, header_style="bold steel_blue3")
+        tabela.add_column("Nome do Restaurante", style="bold white", width=30)
+        tabela.add_column("Categoria", style="bold white", width=20)
+        tabela.add_column("Status", style="bold yellow", justify="center")
+        
+        for item in restaurantes:
+            status_text = "[green]Ativado[/green]" if item['ativo'] else "[red]Desativado[/red]"
+            tabela.add_row(
+                f"[white]{item['nome']}[/white]", 
+                f"[yellow]{item['categoria']}[/yellow]",
+                status_text)
 
-        if ativo == True:
-            console.print(f'[yellow]-[/yellow] {nome_restaurante.ljust(20)} | [deep_sky_blue1]{categoria.ljust(20)}[/deep_sky_blue1] | [italic green1]Ativado[/italic green1]')
-        elif ativo == False:
-            console.print(f'[yellow]-[/yellow] {nome_restaurante.ljust(20)} | [deep_sky_blue1]{categoria.ljust(20)}[/deep_sky_blue1] | [italic red1]Desativado[/italic red1]')
+    console.print(tabela)
     voltar_menu_principal()
-
+    
 def ativar_restaurante():
     '''Função responsável por ativar e desativar o status do restaurante
     
@@ -135,16 +145,19 @@ def ativar_restaurante():
     limpar_tela()
     console.print("[khaki1]Alterando o estado do restaurante.[/khaki1]\n")
 
-    for item in restaurantes:
-        ativo = item['ativo']
-        nome_restaurante = item['nome']
+    tabela1 = Table(show_header=True, header_style="bold steel_blue3")
+    tabela1.add_column("Nome do Restaurante", style="white", width=30)
+    tabela1.add_column("Status", style="bold yellow", justify="center")
 
-        if ativo == True:
-            console.print(
-                f'[steel_blue1]- {nome_restaurante}[/steel_blue1] está [italic green1]Ativado[/italic green1]')
-        elif ativo == False:
-            console.print(
-                f'[steel_blue1]- {nome_restaurante}[/steel_blue1] está [italic red1]Desativado[/italic red1]')
+    for item in restaurantes:
+        nome_restaurante = item['nome']
+        ativo = item['ativo']
+
+        status = "[italic green1]Ativado[/italic green1]" if ativo else "[italic red1]Desativado[/italic red1]"
+        
+        tabela1.add_row(nome_restaurante, status)
+
+    console.print(tabela1)
     print("")
 
     nome_restaurante = input("Digite o nome do restaurante: ").strip()
