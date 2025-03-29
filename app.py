@@ -45,7 +45,7 @@ def exibir_nome_do_programa():
     for linha in linhas:
         texto_colorido = Text()
         for caractere in linha:
-            cor = (ord(caractere) * 50) % 256  # Gera cores variadas
+            cor = (ord(caractere) * 50) % 256
             texto_colorido.append(caractere, style=f"color({cor})")
         console.print(texto_colorido)
     print(""" """)
