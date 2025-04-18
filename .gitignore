@@ -1,1 +1,13 @@
-./modelos/__pychache__
+# Ignorar arquivos de bytecode do Python
+__pycache__/
+modelos/__pycache__/
+
+# Outras entradas comuns
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.env
+*.log
