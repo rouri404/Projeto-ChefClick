@@ -43,7 +43,7 @@
    ```
 3. Execute o script principal:
    ```bash
-   python program.py
+   python3 program.py
    ```
 
 ---
