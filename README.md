@@ -54,7 +54,7 @@
 ![Cadastro de Restaurante](screenshots/cadastro.png)
 ![Lista de Restaurantes](screenshots/listar.png)
 
-> **Nota**: Caso seja um contruidor, sinta-se a vontade de adicionar imagens do projeto em funcionamento, se desejar. Inclua as imagens em `screenshots`.
+> **Nota**: Caso seja um contruidor, sinta-se a vontade de adicionar imagens do projeto em funcionamento, se desejar. Inclua as imagens em [`screenshots`](screenshots/).
 
 ---
 
